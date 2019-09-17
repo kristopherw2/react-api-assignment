@@ -1,8 +1,7 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 
-class ResultsDescription extends Component {
-    render () {
+const ResultsDescription = props =>{
         return(
             <section style={{textAlign: 'center'}}>
             <h2>Book Title</h2>
@@ -11,7 +10,6 @@ class ResultsDescription extends Component {
             <p>This is the description of the book</p>
             </section>
         )
-    }
 }
 
 export default ResultsDescription

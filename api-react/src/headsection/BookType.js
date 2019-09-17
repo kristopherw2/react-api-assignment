@@ -1,19 +1,26 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-class BookType extends Component {
-    render(){
-        return (
-            <>
-                <label htmlFor="book-drop-down"style={{margin:'3px'}}>Book Type:</label>
-                <select id="book-drop-down"style={{margin:'3px'}}>
-                    <option value="This test1">Testing again1</option>
-                    <option value="This test2">Testing again2</option>
-                    <option value="This test3">Testing again3</option>
-                    <option value="This test3">Testing again4</option>
-                </select>
-            </>
-        )
+
+
+const BookType = props => {
+    
+    const handleBookChange = (event) => {
+        
+            props.filterHandler(event.target.value)
+            console.log(event.target.value)
     }
+
+
+        return (
+            <React.Fragment>
+                <label htmlFor="book-drop-down"style={{margin:'3px'}}>Book Type:</label>
+                <select value={props.bookType} onChange={handleBookChange} id="book-drop-down"style={{margin:'3px'}}>
+                    <option value="free ebooks">free ebooks</option>
+                    <option value="paid ebooks">paid ebooks</option>
+                    <option value="ebooks">ebooks</option>
+                </select>
+            </React.Fragment>
+        )
 }
 
 export default BookType
