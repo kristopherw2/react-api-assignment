@@ -1,15 +1,16 @@
-import React from 'react'
+import React from "react";
 
+const ResultsDescription = props => {
+  return (
+    <React.Fragment>
+      <section style={{}}>
+        <h2>{props.title}</h2>
+        <p>Author: {props.author}</p>
+        <p>Price: {props.children}</p>
+        <p>Description: {props.description}</p>
+      </section>
+    </React.Fragment>
+  );
+};
 
-const ResultsDescription = props =>{
-        return(
-            <section style={{textAlign: 'center'}}>
-            <h2>Book Title</h2>
-            <p>Author: Dis Author</p>
-            <p>Price: $50.00</p>
-            <p>This is the description of the book</p>
-            </section>
-        )
-}
-
-export default ResultsDescription
+export default ResultsDescription;

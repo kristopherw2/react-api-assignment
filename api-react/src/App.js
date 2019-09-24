@@ -5,22 +5,24 @@ import ResultsList from './ResultsList/ResultsList'
 
 const api = 'AIzaSyDg4U1Wh2YXdO8BV9UJdFiZ3ndTFaMJTPI'
 
+
 class App extends Component {
   constructor(props){
     super(props)
   this.state = {
-      query: 'Enter Book here',
+      query: 'game of thrones',
       filter:'ebooks',
       printType: 'all',
       jsonObject: {}, 
   }
 }
 
-  bookSearch =() => {
+
+
+  bookSearch = () => {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.query}&filter=${this.state.filter}&printType=${this.state.printType}&orderBy=relevance&key=${api}`)
     .then(response => response.json())
     .then(responseJson =>{  
-         
       const transferThis = responseJson
       this.setState({jsonObject: transferThis})
       console.log(responseJson)
@@ -28,7 +30,7 @@ class App extends Component {
 }
 
     handleSearchQuery(event){
-      console.log(this.state.query)
+      //console.log(this.state.query)
       event.preventDefault()
       this.setState({query: event.target.value})
     }
@@ -38,9 +40,8 @@ class App extends Component {
     }
 
     handlePrintType = (printType) => {
-
+      this.setState({printType: printType })
     }
-
 
 
 
@@ -54,8 +55,11 @@ class App extends Component {
         searchValue={searchValue}
         clickHandler={this.bookSearch}
         filterHandler={this.handleFilter}
-        bookType={this.state.filter}/>        
-        <ResultsList />
+        bookType={this.state.filter}
+        printType={this.handlePrintType}
+        printTypeValue={this.state.printType}/>        
+        <ResultsList
+         resultsAPI={this.state.jsonObject}/>
       </div>
         
   )}
